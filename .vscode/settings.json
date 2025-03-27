@@ -9,7 +9,8 @@
         "inv_mpu_dmp_motion_driver.h": "c",
         "math.h": "c",
         "oled.h": "c",
-        "oledfont.h": "c"
+        "oledfont.h": "c",
+        "cmsis_os.h": "c"
     },
     "git.ignoreLimitWarning": true
 }
