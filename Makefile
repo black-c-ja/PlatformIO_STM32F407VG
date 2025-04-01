@@ -40,6 +40,12 @@ Core/Src/main.c \
 Core/Src/gpio.c \
 Core/Src/spi.c \
 Core/Src/usart.c \
+Core/Src/atk_ms6050.c \
+Core/Src/bsp_eeprom.c \
+Core/Src/bsp_iic.c \
+Core/Src/inv_mpu_dmp_motion_driver.c \
+Core/Src/inv_mpu.c \
+Core/Src/oled.c \
 Core/Src/stm32f4xx_it.c \
 Core/Src/stm32f4xx_hal_msp.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c \

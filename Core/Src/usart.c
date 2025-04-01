@@ -21,6 +21,8 @@
 #include "usart.h"
 
 /* USER CODE BEGIN 0 */
+#include "bsp_eeprom.h"
+#include <string.h>
 #define USART1_RX_BUFFER_SIZE 256
 uint8_t g_usart1_rx_buffer[USART1_RX_BUFFER_SIZE];
 uint16_t g_usart1_rx_length = 0;
@@ -66,7 +68,14 @@ void USART1_Process(void)
     if (g_usart1_rx_received)
     {
         g_usart1_rx_received = 0;
-        HAL_UART_Transmit(&huart1, g_usart1_rx_buffer, g_usart1_rx_length, 0xFFFF);
+        if(strncmp((char *)g_usart1_rx_buffer, "reset", 5) == 0) {
+            EEPROM_WriteByte(EEPROM_UPDATE_ADDR,EEPROM_UPDATE_DATA);
+            HAL_Delay(100);
+            HAL_NVIC_SystemReset();
+        }
+        else {
+          printf("error command!\r\n");
+        }
     }
 }
 /* USER CODE END 0 */

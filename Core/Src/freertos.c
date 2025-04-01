@@ -30,6 +30,7 @@
 #include "inv_mpu.h"
 #include "oled.h"
 #include "bmp.h"
+#include "usart.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -225,6 +226,7 @@ void Debug_Task(void const * argument)
   /* Infinite loop */
   for(;;)
   {
+    USART1_Process();
     //printf("pit:%.2f rol:%.2f yaw:%.2f\r\n",pit,rol,yaw);
     osDelay(500);
   }

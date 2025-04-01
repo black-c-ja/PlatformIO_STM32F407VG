@@ -8,6 +8,8 @@
 #define EEPROM_SIZE 8192
 #define EEPROM_CHECK_DATA 0x55
 #define EEPROM_CHECK_ADDR 8191
+#define EEPROM_UPDATE_ADDR 8190
+#define EEPROM_UPDATE_DATA 0xAA
 
 typedef enum
 {

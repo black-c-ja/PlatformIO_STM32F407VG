@@ -12,5 +12,6 @@
         "oledfont.h": "c",
         "cmsis_os.h": "c"
     },
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "makefile.makePath": "\"C:\\Program Files (x86)\\GnuWin32\\bin\\make.exe\""
 }
