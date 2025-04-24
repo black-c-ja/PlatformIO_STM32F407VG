@@ -37,7 +37,8 @@ extern UART_HandleTypeDef huart1;
 extern UART_HandleTypeDef huart3;
 
 /* USER CODE BEGIN Private defines */
-
+#define USART3_RX() HAL_GPIO_WritePin(USART3_EN_GPIO_Port,USART3_EN_Pin,GPIO_PIN_RESET)
+#define USART3_TX() HAL_GPIO_WritePin(USART3_EN_GPIO_Port,USART3_EN_Pin,GPIO_PIN_SET)
 /* USER CODE END Private defines */
 
 void MX_USART1_UART_Init(void);

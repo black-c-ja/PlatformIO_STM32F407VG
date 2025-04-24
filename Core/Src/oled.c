@@ -1,33 +1,3 @@
-//////////////////////////////////////////////////////////////////////////////////
-// 本程序只供学习使用，未经作者许可，不得用于其它任何用途
-// 中景园电子
-// 店铺地址：http://shop73023976.taobao.com/?spm=2013.1.0.0.M4PqC2
-//
-//   文 件 名   : main.c
-//   版 本 号   : v2.0
-//   作    者   : HuangKai
-//   生成日期   : 2014-0101
-//   最近修改   :
-//   功能描述   : OLED 4接口演示例程(51系列)
-//               说明:
-//               ----------------------------------------------------------------
-//               GND    电源地
-//               VCC  接5V或3.3v电源
-//               D0   接PD6（SCL）
-//               D1   接PD7（SDA）
-//               RES  接PD4
-//               DC   接PD5
-//               CS   接PD3
-//               ----------------------------------------------------------------
-//  修改历史   :
-//  日    期   :
-//  作    者   : HuangKai
-//  修改内容   : 创建文件
-// 版权所有，盗版必究。
-// Copyright(C) 中景园电子2014/3/16
-// All rights reserved
-/******************************************************************************/
-
 #include "oled.h"
 #include "stdlib.h"
 #include "oledfont.h"
@@ -85,7 +55,7 @@ void OLED_WR_Byte(uint8_t dat, uint8_t cmd)
     OLED_DC_Set();
 }
 #endif
-void OLED_Set_Pos(unsigned char x, unsigned char y)
+void OLED_Set_Pos(uint8_t x, uint8_t y)
 {
     OLED_WR_Byte(0xb0 + y, OLED_CMD);
     OLED_WR_Byte(((x & 0xf0) >> 4) | 0x10, OLED_CMD);
@@ -170,8 +140,7 @@ void OLED_DrawBoow(uint8_t x, uint8_t y)
 // 在指定位置显示一个字符,包括部分字符
 // x:0~127
 // y:0~63
-// mode:0,反白显示;1,正常显示
-// size:选择字体 16/12
+// chr:要显示的字符
 void OLED_ShowChar(uint8_t x, uint8_t y, uint8_t chr)
 {
     unsigned char c = 0, i = 0;
@@ -199,7 +168,6 @@ uint32_t oled_pow(uint8_t m, uint8_t n)
 // 显示多个数字
 // x,y :起点坐标
 // len :数字的位数
-// size:字体大小
 // num:数值(-2147483648~2147483647)
 void OLED_ShowNum(uint8_t x, uint8_t y, int32_t num, uint8_t len)
 {
@@ -271,14 +239,18 @@ void OLED_ShowCHinese(uint8_t x, uint8_t y, uint8_t no)
         adder += 1;
     }
 }
-/***********功能描述：显示显示BMP图片128×64起始点坐标(x,y),x的范围0～127，y为页的范围0～7*****************/
+
+//显示BMP图片
+//x0,y0:起点坐标
+//x1,y1:终点坐标
+//BMP[]:要显示的图片
 void OLED_DrawBMP(unsigned char x0, unsigned char y0, unsigned char x1, unsigned char y1, unsigned char BMP[])
 {
     unsigned int j = 0;
     unsigned char x, y;
 
     if (y1 % 8 == 0)
-        y = y1 / 8;
+        y = y1 / 8; 
     else
         y = y1 / 8 + 1;
     for (y = y0; y < y1; y++)

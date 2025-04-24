@@ -204,10 +204,11 @@ void MPU6050_Task(void const * argument)
 void OLED_Display_Task(void const * argument)
 {
   /* USER CODE BEGIN OLED_Display_Task */
+  OLED_DrawBMP(0,0,128,64,BMP1);
   /* Infinite loop */
   for(;;)
   {
-    OLED_DrawBoow(add_x,add_y);
+    //OLED_DrawBoow(add_x,add_y);
     osDelay(50);
   }
   /* USER CODE END OLED_Display_Task */
